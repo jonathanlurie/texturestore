@@ -1,0 +1,111 @@
+<html>
+<head>
+  <title>Test</title>
+  <style>
+  body {
+    margin: none;
+    font-family: monospace;
+  }
+  .success {
+    background: #cbffcb;
+  }
+
+  .warning {
+    background: #ffde81;
+  }
+
+  .error {
+    background: #ff8d8d;
+  }
+
+  .bar-card {
+    padding: 10px;
+    background: #EEE;
+  }
+
+  .bar  {
+    height: 20px;
+    margin-bottom: 5px;
+    width: 1px;
+  }
+
+  .label {
+    height: 20px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+
+
+
+  #bar-0 {
+    background: #4dacff;
+  }
+
+  #bar-1 {
+    background: #29efa6;
+  }
+
+  #bar-2 {
+    background: #ecc606;
+  }
+
+  #bar-3 {
+    background: #ff662b;
+  }
+
+  .label-card {
+
+  }
+
+  .metrics {
+    display: inline-flex;
+  }
+
+
+  </style>
+</head>
+<body>
+  <div class="metrics">
+
+    <div id="label-card">
+      <div id="label-0" class="label">
+        hello
+      </div>
+      <div id="label-1" class="label">
+        #
+      </div>
+      <div id="label-2" class="label">
+        #
+      </div>
+      <div id="label-3" class="label">
+        #
+      </div>
+    </div>
+
+    <div id="bar-card">
+      <div id="bar-0" class="bar">
+      </div>
+      <div id="bar-1" class="bar">
+      </div>
+      <div id="bar-2" class="bar">
+      </div>
+      <div id="bar-3" class="bar">
+      </div>
+    </div>
+
+
+  </div>
+  <div id="printer"></div>
+
+
+  <script src="./js/three.js"></script>
+  <script src="../dist/texturestore.js"></script>
+  <script src="./js/bufferqueue.js"></script>
+  <script src="./10um.js"></script>
+  <script src="./app.js"></script>
+
+
+
+
+</body>
+</html>
