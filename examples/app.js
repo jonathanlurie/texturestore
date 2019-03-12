@@ -1,6 +1,6 @@
 
 let chunkCollection = new texturestore.ChunkCollection({
-  maxSizeMegaByte: 500
+  maxSizeMegaByte: 100
 })
 console.log(chunkCollection)
 
@@ -16,6 +16,9 @@ for(let i=0; i<queueSetting.priorityLevels; i++){
   barDivs.push(document.getElementById(`bar-${i}`))
   labelDivs.push(document.getElementById(`label-${i}`))
 }
+
+let byteSizeBar = document.getElementById(`bar-4`)
+let byteSizeLabel = document.getElementById(`label-4`)
 
 console.log(barDivs)
 
@@ -66,7 +69,7 @@ let wholeFileList = path10um.map(f => `${serverPath}${f}`)
 
 
 let nbFilesQueried = 0
-let maxNumberOfFiles = 4000
+let maxNumberOfFiles = 1000
 
 let interv = setInterval(function (){
   let nbFiles = ~~(Math.random() * 10) + 1
@@ -94,6 +97,11 @@ function updateChart() {
     barDivs[i].style.width=`${sizes[i]}px`;
     labelDivs[i].innerHTML = sizes[i]
   }
+
+  let megaByteSize = ~~(chunkCollection.getTotalByteSize() / 1024**2)
+  byteSizeBar.style.width=`${megaByteSize}px`;
+  byteSizeLabel.innerHTML = megaByteSize + ' MB'
+
 }
 
 function print(str, type = 'info') {

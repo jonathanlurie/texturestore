@@ -50,6 +50,11 @@ class Chunk {
     return null
   }
 
+  destroy(){
+    //this._texture3D.image.data.length = 0
+    this._texture3D.image.data = null
+  }
+
 
 }
 

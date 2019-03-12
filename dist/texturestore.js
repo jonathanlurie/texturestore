@@ -55,6 +55,11 @@
       return null
     }
 
+    destroy(){
+      //this._texture3D.image.data.length = 0
+      this._texture3D.image.data = null;
+    }
+
 
   }
 
@@ -92,6 +97,12 @@
       return this._totalByteSize
     }
 
+
+    getNumberOfElements() {
+      return Object.keys(this._collection).length
+    }
+
+
     createChunk(id, texture3D) {
       let t = new Chunk(id, texture3D);
       this._collection[id] = t;
@@ -100,9 +111,7 @@
       if(this._totalByteSize > this._maxByteSize) {
         this._clean();
       }
-
-      console.log(~~(this._totalByteSize / 1024**2) + ' MB');
-
+      //console.log(~~(this._totalByteSize / 1024**2) + ' MB')
       return t
     }
 
@@ -110,6 +119,7 @@
     deleteChunk(id) {
       if(id in this._collection) {
         this._totalByteSize -= this._collection[id].getByteSize();
+        this._collection[id].destroy();
         delete this._collection[id];
       }
     }
@@ -121,6 +131,11 @@
       } else {
         return null
       }
+    }
+
+
+    hasChunk(id) {
+      return (id in this._collection)
     }
 
 
@@ -156,10 +171,7 @@
 
       for(let i=0; i<idTs.length; i++) {
         let id = idTs[i].id;
-        let chunk = this._collection[id];
-        let byteSize = chunk.getByteSize();
-        delete this._collection[id];
-        this._totalByteSize -= byteSize;
+        this.deleteChunk(id);
 
         if(this._totalByteSize <= this._thresholdByteSize){
           break
