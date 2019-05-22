@@ -125,7 +125,7 @@
     }
 
 
-    getChunk(id) {
+    getChunk(id) { 
       if(id in this._collection) {
         return this._collection[id]
       } else {
